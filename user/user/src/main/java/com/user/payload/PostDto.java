@@ -1,4 +1,4 @@
-package com.post.payload;
+package com.user.payload;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Setter
 public class PostDto {
     private long id;
-    private String post;
-    private long commentId;
+    private String comment;
+    private long postId;
     private long userId;
     private LocalDateTime timestamp;
 }

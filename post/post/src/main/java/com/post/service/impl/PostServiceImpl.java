@@ -37,10 +37,12 @@ private PostRepository postRepository;
     }
 
     @Override
-    public List<PostDto> getPost(long id) {
+    public List<PostDto> getPostByUserId(long id) {
 
         List<Post> res=postRepository.findByUserId(id);
         List<PostDto> lst=res.stream().map(a->mapperHere.mapToPostDto(a)).collect(Collectors.toList());
         return lst;
     }
+
+
 }

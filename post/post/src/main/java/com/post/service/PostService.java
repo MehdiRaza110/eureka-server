@@ -7,5 +7,6 @@ import java.util.List;
 public interface PostService {
     PostDto addPost(PostDto postDto);
 
-    List<PostDto> getPost(long id);
+    List<PostDto> getPostByUserId(long id);
+
 }

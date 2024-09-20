@@ -2,10 +2,7 @@ package com.post.controller;
 
 import com.post.payload.PostDto;
 import com.post.service.PostService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,10 +20,10 @@ public class PostController {
         return postService.addPost(postDto);
     }
 
-    @RequestMapping("/get")
-
-    public List<PostDto> getPost(@PathVariable("/{id}") long id){
-        List<PostDto> res= postService.getPost(id);
+    @RequestMapping("/get/{id}")
+    public List<PostDto> getPostByUserId(@PathVariable("id") long id){
+        List<PostDto> res= postService.getPostByUserId(id);
         return res;
     }
+
 }

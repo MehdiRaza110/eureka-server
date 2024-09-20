@@ -18,8 +18,8 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String comment;
-    private long postId;
+    private String post;
+    private long commentId;
     private long userId;
     private LocalDateTime timestamp;
 

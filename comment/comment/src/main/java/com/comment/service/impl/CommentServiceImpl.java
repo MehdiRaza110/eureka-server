@@ -8,6 +8,10 @@ import com.comment.utill.MapperHere;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -19,10 +23,21 @@ public class CommentServiceImpl implements CommentService {
 
     private MapperHere mapperHere;
     private CommentRepository commentRepository;
+
     @Override
     public CommentDto addComment(CommentDto commentDto) {
         CommentMe commentMe = mapperHere.mapToCommentEntity(commentDto);
+        LocalDateTime localDateTime=LocalDateTime.now();
+        commentMe.setTimestamp(localDateTime);
         CommentMe save = commentRepository.save(commentMe);
         return mapperHere.mapToCommentDto(save);
     }
+
+    @Override
+    public List<CommentDto> getComment(long id) {
+        List<CommentMe> byUserId = commentRepository.findByUserId(id);
+        return byUserId.stream().map(a->mapperHere.mapToCommentDto(a)).collect(Collectors.toList());
+    }
+
+
 }
